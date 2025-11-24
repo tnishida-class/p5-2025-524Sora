@@ -14,9 +14,9 @@ function windowResized(){ // ウィンドウがリサイズされるたびに呼
 
 // 市松模様の設定
 function drawChecker(){
-  const w = width / 8 //画面を8*8の64個にわけた市松模様
-  for(let i=0; i<100; i++){
-    for(let j=0; j<100; j++){
+  const w = width / 16 //画面を16+16の256個にわけた市松模様
+  for(let i=0; i<16; i++){
+    for(let j=0; j<16; j++){
       if(i%2!=j%2){
         fill(0, 128, 0) //緑
       }else{
