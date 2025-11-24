@@ -12,30 +12,25 @@ function windowResized(){ // ウィンドウがリサイズされるたびに呼
   resizeCanvas(windowWidth, windowHeight); // キャンバスをリサイズする（createCanvasではないので注意）
 }
 
+// 市松模様の設定
+function drawChecker(){
+  const w = width / 8 //画面を8*8の64個にわけた市松模様
+  for(let i=0; i<100; i++){
+    for(let j=0; j<100; j++){
+      if(i%2!=j%2){
+        fill(0, 128, 0) //緑
+      }else{
+        fill(0)
+      }
+      rect(w*i, w*j, w, w);
+   }
+ }
+}
 function draw(){
   background(255); // 背景を白に設定
   noStroke(); // 枠線を描かない
-
-  // 市松模様の設定
-  let a = 80; // 変数aの宣言。変数の宣言と同時に値を代入。
-  for (let i = 0; i < windowWidth; i++){ 
-  // let i = 0：変数の宣言と同時に値を代入。〈繰り返し前にする処理〉
-  // i < windowWidth：iがwindowWidthより小さければ。〈繰り返しを続ける条件〉
-  // i++：1増やす。〈繰り返し毎にする処理〉
-    for (let j = 0; j < windowHeight; j++){
-    // let j = 0：変数の宣言と同時に値を代入。〈繰り返し前にする処理〉
-    // j < windowWidth：jがwindowWidthより小さければ。〈繰り返しを続ける条件〉
-    // j++：1増やす。〈繰り返し毎にする処理〉
-      if((i + j) % 2 == 0){
-        fill(0, 128, 0); // 緑色に設定
-      }
-      else{
-        fill(0); // 黒色に設定
-      }
-      rect(i * a, j * a, a, a);
-    }
-  }
-
+  drawChecker(); // 市松模様の表示
+  
   // おみくじの揺れの設定
   if(mouseIsPressed){
     count = (count + 3) % cycle;
